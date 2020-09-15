@@ -21,5 +21,15 @@ namespace FirstWinForm
         {
 
         }
+
+        private void button1_MouseHover(object sender, EventArgs e)
+        {
+            Console.WriteLine(e.ToString());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            label3.Text = Int32.Parse(textBox1.Text) + Int32.Parse(textBox2.Text) + "";
+        }
     }
 }
