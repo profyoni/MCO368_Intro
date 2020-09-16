@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using Humanizer;
 using Microsoft.VisualBasic.CompilerServices;
 
@@ -6,24 +7,58 @@ namespace MathLib
 {
     public class Fraction
     {
-        private int n, d;
+        private int d;
 
-        public Fraction(int num = 0, int den = 1)
+        public Fraction(int num = 0, int den = 1)// default par must be compiler constants
         {
-            if (n < 0 && d < 0)
-            {
-                n *= -1;
-                d *= -1;
-            }
-            n = num;
-            if (den == 0) // data validation
-                throw new ArgumentOutOfRangeException("denominator may not be 0");
-            d = den;
+            Numerator = num;
+            Denominator = den;
+            Simplify();
         }
 
-        //props
+        private void Simplify()
+        {
+            if (Numerator < 0 && d < 0)
+            {
+                Numerator *= -1;
+                d *= -1;
+            }
+            Reduce();
+        }
 
-        //Operators overload
+        private void Reduce()
+        {
+            // TODO
+        }
+
+        //properties - Looks like a variable, but it's really a method
+        public int Numerator
+        {
+            get;set;
+        }
+
+        // C# In Depth
+        public int Denominator
+        {
+            get 
+            {
+                return d; 
+            }
+            set 
+            {
+                if (value == 0) // data validation
+                    throw new ArgumentOutOfRangeException("denominator may not be 0");
+
+                d = value; 
+            }
+        }
+
+        //Overloading Operators
+
+        public static Fraction operator +(Fraction f1, Fraction f2)
+        {// TODO
+            return new Fraction(f1.Numerator + f2.Numerator, f1.Denominator);
+        }
     }
 
 

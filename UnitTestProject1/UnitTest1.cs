@@ -30,6 +30,23 @@ namespace UnitTestProject1
         {
             "C:\\\\www.example.com".Should().Be(@"C:\\www.example.com");
         }
-        
+
+        [TestMethod]
+        public void LanguageTest2()
+        {
+            var f = new Fraction();
+
+            f.Numerator = 5;
+            f.Denominator = 9;
+
+            int a = f.Numerator;
+
+            Fraction f3 = f + f; // f1.Add(f1)
+
+            f3.Numerator.Should().Be(10);
+        }
+
+
+
     }
 }
